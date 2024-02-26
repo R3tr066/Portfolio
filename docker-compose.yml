@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  php:
+    build:
+      dockerfile: ./docker/PHP/Dockerfile
+    volumes:
+      - './app:/app'
+    container_name: portfolio-php
+    depends_on:
+      - postgres
+
+  nginx:
+    image: nginx:latest
+    container_name: portfolio-nginx
+    ports:
+      - 8080:80
+    links:
+      - 'php'
+    volumes:
+      - './app/public:/app/public'
+      - './docker/nginx:/etc/nginx/conf.d'
+    depends_on:
+      - php
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: portfolio-db
+    environment:
+      POSTGRES_DB: portfolio
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres-data:/var/lib/postgres
+
+
+volumes:
+  postgres-data:
