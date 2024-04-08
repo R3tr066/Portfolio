@@ -4,8 +4,9 @@ services:
   php:
     build:
       dockerfile: ./docker/PHP/Dockerfile
+    working_dir: /app
     volumes:
-      - './app:/app'
+      - './:/app'
     container_name: portfolio-php
     depends_on:
       - postgres
@@ -17,8 +18,9 @@ services:
       - 8080:80
     links:
       - 'php'
+    working_dir: /app
     volumes:
-      - './app/public:/app/public'
+      - './:/app'
       - './docker/nginx:/etc/nginx/conf.d'
     depends_on:
       - php
@@ -28,10 +30,15 @@ services:
     container_name: portfolio-db
     environment:
       POSTGRES_DB: portfolio
+      POSTGRES_USER: tom
       POSTGRES_PASSWORD: postgres
     volumes:
-      - postgres-data:/var/lib/postgres
+      - './app:/app'
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5435:5432"
 
 
 volumes:
   postgres-data:
+    external: true

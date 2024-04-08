@@ -1,0 +1,11 @@
+<?php
+declare(strict_types=1);
+
+$settings = [
+    'db' => [
+        'dsn' => 'pgsql:dbname=portfolio;host=postgres',
+        'user' => 'tom',
+        'password' => 'postgres',
+    ],
+    'rapidApiKey' => 'your api key'
+];
