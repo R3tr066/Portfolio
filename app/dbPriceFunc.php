@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-require_once __DIR__ . '/../app/connection.php';
-function findMePriceByDateAndSymbol(PDO $connection, string $date, string $symbol): array
+function findPriceByDateAndSymbol(PDO $connection, string $date, string $symbol): array
 {
     $sql = "SELECT * FROM price
             INNER JOIN stock ON price.stock_id = stock.id

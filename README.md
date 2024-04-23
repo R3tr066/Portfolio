@@ -10,7 +10,10 @@ Táto aplikácia zobrazuje informácie o aktuálnych cenách akcií vo vašom po
 2. `cd Portfolio`
 3. vytvorenie úložiska pre dáta z databázy `docker volume create postgres-data`
 4. rozbehnutie aplikácie `docker compose up -d`
-5. vytvorenie schémy v databáze `docker exec -it portfolio-php php db/001.php`
+5. vytvorenie súboru s nataveniami aplikácie`cp app/settings.php.dist app/settings.php
+6. `
+6. vytvorenie schémy v databáze `docker exec -it portfolio-php php db/001.php`
+7. aplikaciu si môžete pozrieť na http://localhost:8080/
 ### Zapnutie a vypnutie aplikácie
 - vypnutie aplikácie `docker compose stop`
 - zapnutie aplikacie `docker compose start`

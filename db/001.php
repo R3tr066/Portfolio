@@ -1,11 +1,8 @@
 <?php
 declare(strict_types=1);
 
-$dsn = 'pgsql:dbname=portfolio;host=postgres';
-$user = 'tom';
-$password = 'postgres';
-
-$conn = new PDO($dsn, $user, $password);
+require_once __DIR__ . '/../app/settings.php';
+$connection = new PDO($settings['db']['dsn'], $settings['db']['user'], $settings['db']['password']);
 
 $sql = "
 DROP TABLE IF EXISTS stock_transaction;
@@ -46,9 +43,10 @@ CREATE TABLE stock
         CONSTRAINT stock_uq_code
             UNIQUE,
     name   VARCHAR(100) NOT NULL,
-    currency_id INTEGER      NOT NULL
+    currency_id INTEGER      NOT NULL 
         CONSTRAINT curenncy_id_fk
-            REFERENCES currency
+            REFERENCES currency,
+    alias       VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE price
@@ -111,15 +109,15 @@ VALUES ('EUR', '&euro;');
 INSERT INTO public.currency (code, symbol)
 VALUES ('USD', '&dollar;');
 
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('QDV5.DE', 'iShares MSCI India UCITS ETF USD Acc', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('IDVY.NL', 'iShares Euro Dividend UCITS (Dist EUR)', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('UST.FR', 'Lyxor Nasdaq-100 UCITS (Acc EUR)', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('BRYN.DE', 'Berkshire Hathaway Inc.', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('EUNL.DE', 'iShares Core MSCI World UCITS ETF USD (Acc)', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('2B7K.DE', 'iShares MSCI World SRI UCITS ETF', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('P911.DE', 'Dr. Ing. h.c. F. Porsche AG', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('SXR8.DE', 'iShares Core S&P 500 UCITS ETF USD (Acc)', 1);
-INSERT INTO public.stock (symbol, name, currency_id) VALUES ('ASML.AS', 'ASML Holding N.V.', 1);
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('QDV5.DE', 'iShares MSCI India UCITS ETF USD Acc', 1, 'QDV5.DE');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('IDVY.NL', 'iShares Euro Dividend UCITS (Dist EUR)', 1, 'IDVY.AS');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('UST.FR', 'Lyxor Nasdaq-100 UCITS (Acc EUR)', 1, 'UST.PA');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('BRYN.DE', 'Berkshire Hathaway Inc.', 1, 'BRYN.DE');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('EUNL.DE', 'iShares Core MSCI World UCITS ETF USD (Acc)', 1, 'EUNL.DE');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('2B7K.DE', 'iShares MSCI World SRI UCITS ETF', 1, '2B7K.DE');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('P911.DE', 'Dr. Ing. h.c. F. Porsche AG', 1, 'P911.DE');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('SXR8.DE', 'iShares Core S&P 500 UCITS ETF USD (Acc)', 1, 'SXR8.DE');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('ASML.AS', 'ASML Holding N.V.', 1, 'ASML.AS');
 
 
 INSERT INTO public.stock_transaction_type (code, name)
@@ -129,4 +127,4 @@ VALUES ('SELL', 'Predaj');
 
 ";
 
-$conn->exec($sql);
+$connection->exec($sql);
