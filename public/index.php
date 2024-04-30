@@ -14,10 +14,10 @@ require_once __DIR__ . '/../app/fillTable.php';
 
 //updatePrice($connection, $settings['rapidApiKey']);
 
-//var_dump(fillTable($connection));
 $data = fillTable($connection);
 
 ?>
+
     <table class="table">
         <thead>
         <tr>
@@ -25,11 +25,12 @@ $data = fillTable($connection);
             <th scope="col">Name</th>
             <th scope="col">Symbol</th>
             <th scope="col">Price</th>
+            <th scope="col">Currnecy</th>
             <th scope="col">Date</th>
         </tr>
         </thead>
 
-        <tbody>
+        <tbody class="table-group-divider">
         <?php
         $i = 1;
         foreach ($data as $row) {
@@ -38,6 +39,7 @@ $data = fillTable($connection);
                 <td>{$row['name']}</td>
                 <td>{$row['symbol']}</td>
                 <td>{$row['price']}</td>
+                <td>{$row['mark']}</td>
                 <td>{$row['price_date']}</td>
               </tr>";
             $i++;
@@ -46,5 +48,7 @@ $data = fillTable($connection);
         </tbody>
     </table>
 
+    <button id="updatePriceButton">Update Prices</button>
 
 <?php require __DIR__ . '/../parts/script.php'; ?>
+<?php require __DIR__ . '/../parts/footer.php'; ?>

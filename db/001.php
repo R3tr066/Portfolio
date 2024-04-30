@@ -31,7 +31,7 @@ CREATE TABLE currency
     code   VARCHAR(10) NOT NULL
         CONSTRAINT currency_uq_code
             UNIQUE,
-    symbol VARCHAR(10) NOT NULL
+    mark VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE stock
@@ -104,9 +104,9 @@ VALUES ('XTB', 'XTB');
 INSERT INTO public.broker (code, name)
 VALUES ('T212', 'Trading 212');
 
-INSERT INTO public.currency (code, symbol)
+INSERT INTO public.currency (code, mark)
 VALUES ('EUR', '&euro;');
-INSERT INTO public.currency (code, symbol)
+INSERT INTO public.currency (code, mark)
 VALUES ('USD', '&dollar;');
 
 INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('QDV5.DE', 'iShares MSCI India UCITS ETF USD Acc', 1, 'QDV5.DE');
@@ -118,6 +118,7 @@ INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('2B7K.DE', '
 INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('P911.DE', 'Dr. Ing. h.c. F. Porsche AG', 1, 'P911.DE');
 INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('SXR8.DE', 'iShares Core S&P 500 UCITS ETF USD (Acc)', 1, 'SXR8.DE');
 INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('ASML.AS', 'ASML Holding N.V.', 1, 'ASML.AS');
+INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('VLD', 'Velo3D, Inc.', 2, 'VLD');
 
 
 INSERT INTO public.stock_transaction_type (code, name)
