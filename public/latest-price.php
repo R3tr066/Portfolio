@@ -14,15 +14,8 @@ require_once __DIR__ . '/../app/fillTable.php';
 //updatePrice($connection, $settings['rapidApiKey']);
 
 $data = fillTable($connection);
-
-//var_dump($_REQUEST);
-//echo "</br>";
-//var_dump($_GET);
-//echo "</br>";
-//var_dump($_SERVER);
-//echo "</br>";
-//exit();
 ?>
+
 
     <table class="table">
         <thead>
@@ -31,7 +24,6 @@ $data = fillTable($connection);
             <th scope="col">Name</th>
             <th scope="col">Symbol</th>
             <th scope="col">Price</th>
-            <th scope="col">Currnecy</th>
             <th scope="col">Date</th>
         </tr>
         </thead>
@@ -44,8 +36,7 @@ $data = fillTable($connection);
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
                 <td>{$row['symbol']}</td>
-                <td>{$row['price']}</td>
-                <td>{$row['mark']}</td>
+                <td>{$row['price']} {$row['mark']}</td>
                 <td>{$row['price_date']}</td>
               </tr>";
             $i++;

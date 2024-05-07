@@ -9,30 +9,24 @@ require_once __DIR__ . '/../app/getStockPriceFunc.php';
 require_once __DIR__ . '/../app/dbPriceFunc.php';
 require_once __DIR__ . '/../app/priceUpdate.php';
 require_once __DIR__ . '/../app/dbSymbolFunc.php';
-require_once __DIR__ . '/../app/fillTable.php';
+require_once __DIR__ . '/../app/dbPortfolio.php';
 
-//updatePrice($connection, $settings['rapidApiKey']);
-
-$data = fillTable($connection);
-
-//var_dump($_REQUEST);
-//echo "</br>";
-//var_dump($_GET);
-//echo "</br>";
-//var_dump($_SERVER);
-//echo "</br>";
-//exit();
+$data = displayStockReport($connection);
 ?>
+
 
     <table class="table">
         <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Symbol</th>
+            <th scope="col">Volume</th>
             <th scope="col">Price</th>
-            <th scope="col">Currnecy</th>
-            <th scope="col">Date</th>
+            <th scope="col">Latest price</th>
+            <th scope="col">Price date</th>
+            <th scope="col">Value 2</th>
+            <th scope="col">Profit</th>
+            <th scope="col">Percent</th>
         </tr>
         </thead>
 
@@ -43,10 +37,13 @@ $data = fillTable($connection);
             echo "<tr>
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
-                <td>{$row['symbol']}</td>
+                <td>{$row['volume']}</td>
                 <td>{$row['price']}</td>
-                <td>{$row['mark']}</td>
+                <td>{$row['latest_price']}</td>
                 <td>{$row['price_date']}</td>
+                <td>{$row['value_2']}</td>
+                <td>{$row['profit']}</td>
+                <td>{$row['percent']} %</td>
               </tr>";
             $i++;
         }
