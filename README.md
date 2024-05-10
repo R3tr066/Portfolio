@@ -13,7 +13,7 @@ Táto aplikácia zobrazuje informácie o aktuálnych cenách akcií vo vašom po
 5. vytvorenie súboru s nataveniami aplikácie`cp app/settings.php.dist app/settings.php`
 6. vytvoriť účet na: https://rapidapi.com/ (ak už máte účet môžete tento krok preskočit a ísť na ďaľší)
 7. vybrať si predplatné na: https://rapidapi.com/apidojo/api/yh-finance/pricing
-8. ak máme predlplatné tak na: https://rapidapi.com/apidojo/api/yh-finance naj́sť a okopírovať Apikey a vložiť ho do settings.php ![Apikey](img/Apikey.jpg)
+8. ak máme predlplatné tak na: https://rapidapi.com/apidojo/api/yh-finance naj́sť a okopírovať Apikey a vložiť ho do settings.php na miesto 'rapidApiKey' ![Apikey](img/Apikey.jpg)
 6. vytvorenie schémy v databáze `docker exec -it portfolio-php php db/001.php`
 7. aplikaciu si môžete pozrieť na http://localhost:8080/
 ### Zapnutie a vypnutie aplikácie
