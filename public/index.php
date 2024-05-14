@@ -1,59 +1,9 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/../parts/head.php';
+include_once __DIR__ . '/../classes/router.php';
 
-require_once __DIR__ . '/../app/connection.php';
-require_once __DIR__ . '/../app/settings.php';
-require_once __DIR__ . '/../app/getStockPriceFunc.php';
-require_once __DIR__ . '/../app/dbPriceFunc.php';
-require_once __DIR__ . '/../app/priceUpdate.php';
-require_once __DIR__ . '/../app/dbSymbolFunc.php';
-require_once __DIR__ . '/../app/fillTable.php';
-
-//updatePrice($connection, $settings['rapidApiKey']);
-
-$data = fillTable($connection);
-
-//var_dump($_REQUEST);
-//echo "</br>";
-//var_dump($_GET);
-//echo "</br>";
-//var_dump($_SERVER);
-//echo "</br>";
-//exit();
+Router:: handle('GET', '/portfolio', './portfolio.php');
+Router:: handle('GET', '/latest-price', './latest-price.php');
 ?>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Symbol</th>
-            <th scope="col">Price</th>
-            <th scope="col">Currnecy</th>
-            <th scope="col">Date</th>
-        </tr>
-        </thead>
-
-        <tbody class="table-group-divider">
-        <?php
-        $i = 1;
-        foreach ($data as $row) {
-            echo "<tr>
-                <th scope='row'>$i</th>
-                <td>{$row['name']}</td>
-                <td>{$row['symbol']}</td>
-                <td>{$row['price']}</td>
-                <td>{$row['mark']}</td>
-                <td>{$row['price_date']}</td>
-              </tr>";
-            $i++;
-        }
-        ?>
-        </tbody>
-    </table>
-
-
-<?php require __DIR__ . '/../parts/script.php'; ?>
-<?php require __DIR__ . '/../parts/footer.php'; ?>
