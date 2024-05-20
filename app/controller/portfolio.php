@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-require __DIR__ . '/../parts/head.php';
+require __DIR__ . '/../../parts/head.php';
 
-require_once __DIR__ . '/../app/connection.php';
-require_once __DIR__ . '/../app/settings.php';
-require_once __DIR__ . '/../app/getStockPriceFunc.php';
-require_once __DIR__ . '/../app/dbPriceFunc.php';
-require_once __DIR__ . '/../app/priceUpdate.php';
-require_once __DIR__ . '/../app/dbSymbolFunc.php';
-require_once __DIR__ . '/../app/dbPortfolio.php';
+require_once __DIR__ . '/../../app/connection.php';
+require_once __DIR__ . '/../../app/settings.php';
+require_once __DIR__ . '/../../app/getStockPriceFunc.php';
+require_once __DIR__ . '/../../app/dbPriceFunc.php';
+require_once __DIR__ . '/../../app/priceUpdate.php';
+require_once __DIR__ . '/../../app/dbSymbolFunc.php';
+require_once __DIR__ . '/../../app/dbPortfolio.php';
 
 $data = displayStockReport($connection);
 ?>
@@ -52,5 +52,5 @@ $data = displayStockReport($connection);
     </table>
 
 
-<?php require __DIR__ . '/../parts/script.php'; ?>
-<?php require __DIR__ . '/../parts/footer.php'; ?>
+<?php require __DIR__ . '/../../parts/script.php'; ?>
+<?php require __DIR__ . '/../../parts/footer.php'; ?>

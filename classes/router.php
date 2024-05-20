@@ -2,21 +2,28 @@
 
 class Router
 {
-    public static function handle()
+    public static function handle(): void
     {
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = $_SERVER['REQUEST_URI'];
 
-        switch ($method) {
-
-        }
-
-        $pattern = '~^/portfolio[?|#].*~siD';
-        if (preg_match($pattern, $currentUri)) {
-            require_once $filename;
+        // main page
+        if (preg_match('~^/([?|#].*)*$~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/mainPage.php';
             exit();
-
         }
-        return false;
+        // latest price
+        if (preg_match('~^/latest-price([?|#].*)*~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/latestPriceShow.php';
+            exit();
+        }
+        // portfolio
+        if (preg_match('~^/portfolio([?|#].*)*~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/portfolio.php';
+            exit();
+        }
+        // 404
+        require_once __DIR__ . '/../app/controller/404.php';
+
     }
 }
