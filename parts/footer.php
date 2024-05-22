@@ -1,12 +1,17 @@
-<link rel="stylesheet" href="../css/footer.css">
-<footer class="footer">
-    <div class="container">
-        <p class="text-center">Copyright © 2024 Tomáš Šablica. All Rights Reserved.</p>
-        <div class="social-links text-center">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
+</div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-body-tertiary">
+    <div class="container text-center">
+        <span class="text-body-secondary ">Copyright © 2024 Tomáš Šablica.</span>
     </div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

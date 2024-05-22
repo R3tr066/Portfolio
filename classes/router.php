@@ -22,6 +22,11 @@ class Router
             require_once __DIR__ . '/../app/controller/portfolio.php';
             exit();
         }
+        // update price
+        if (preg_match('~^/update-price([?|#].*)*~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/updatePrice.php';
+            exit();
+        }
         // 404
         require_once __DIR__ . '/../app/controller/404.php';
 

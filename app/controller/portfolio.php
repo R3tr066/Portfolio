@@ -52,5 +52,4 @@ $data = displayStockReport($connection);
     </table>
 
 
-<?php require __DIR__ . '/../../parts/script.php'; ?>
 <?php require __DIR__ . '/../../parts/footer.php'; ?>
