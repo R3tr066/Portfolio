@@ -11,6 +11,7 @@ function displayStockReport(PDO $connection):array
                       s.id AS stock_id
                  , p.price
                  , p.price_date
+                 , c.mark
                   FROM
                       stock s
                       INNER JOIN price p
@@ -45,12 +46,13 @@ function displayStockReport(PDO $connection):array
         s.Name
    , s.Volume
    , s.price
+   , p.mark
    , p.price AS latest_price
-   , p.price_date
+   , to_char(p.price_date, 'DD.MM.YYYY') AS price_date
    , s.Volume * s.price AS value
    , s.Volume * p.price AS value_2
    , (s.Volume * p.price) - (s.Volume * s.price) AS profit
-   , cast(((((s.Volume * p.price) - (s.Volume * s.price)) / (s.Volume * p.price)) * 100) AS NUMERIC(5, 2)) AS percent
+   , CAST(ROUND(((s.Volume * p.price) - (s.Volume * s.price)) / (s.Volume * s.price) * 100, 2) AS NUMERIC(6,2)) AS percent
 
     FROM
         stock s

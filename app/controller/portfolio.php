@@ -24,7 +24,6 @@ $data = displayStockReport($connection);
             <th scope="col">Price</th>
             <th scope="col">Latest price</th>
             <th scope="col">Price date</th>
-            <th scope="col">Value 2</th>
             <th scope="col">Profit</th>
             <th scope="col">Percent</th>
         </tr>
@@ -34,22 +33,27 @@ $data = displayStockReport($connection);
         <?php
         $i = 1;
         foreach ($data as $row) {
+            $volume = number_format((float)$row['volume'], 2, ',', ' ');
+            $latestPrice = number_format((float)$row['latest_price'], 2, ',', ' ');
+            $price = number_format((float)$row['price'], 2, ',', ' ');
+            $profit = number_format((float)$row['profit'], 2, ',', ' ');
+            $percent = number_format((float)$row['percent'], 2, ',', ' ');
             echo "<tr>
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
-                <td>{$row['volume']}</td>
-                <td>{$row['price']}</td>
-                <td>{$row['latest_price']}</td>
+                <td>$volume </td>
+                <td>$price{$row['mark']}</td>
+                <td>$latestPrice{$row['mark']}</td>
                 <td>{$row['price_date']}</td>
-                <td>{$row['value_2']}</td>
-                <td>{$row['profit']}</td>
-                <td>{$row['percent']} %</td>
+                <td>$profit{$row['mark']}</td>
+                <td>$percent%</td>
               </tr>";
             $i++;
         }
         ?>
         </tbody>
     </table>
+    <a class="btn btn-succes" href="/add-transaction" role="button">add transaction</a>
 
 
 <?php require __DIR__ . '/../../parts/footer.php'; ?>
