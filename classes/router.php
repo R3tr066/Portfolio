@@ -27,8 +27,13 @@ class Router
             require_once __DIR__ . '/../app/controller/updatePrice.php';
             exit();
         }
-        // update price
-        if (preg_match('~^/add-transaction([?|#].*)*~si', $uri)) {
+        // insert transaction
+        if (preg_match('~^/add-transaction([?|#].*)*~si', $uri) && $method == "GET") {
+            require_once __DIR__ . '/../app/controller/addTransactionForm.php';
+            exit();
+        }
+        // upload transaction
+        if (preg_match('~^/add-transaction([?|#].*)*~si', $uri) && $method == "POST") {
             require_once __DIR__ . '/../app/controller/addTransaction.php';
             exit();
         }

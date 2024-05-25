@@ -42,10 +42,10 @@ $data = displayStockReport($connection);
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
                 <td>$volume </td>
-                <td>$price{$row['mark']}</td>
-                <td>$latestPrice{$row['mark']}</td>
+                <td>$price {$row['mark']}</td>
+                <td>$latestPrice {$row['mark']}</td>
                 <td>{$row['price_date']}</td>
-                <td>$profit{$row['mark']}</td>
+                <td>$profit {$row['mark']}</td>
                 <td>$percent%</td>
               </tr>";
             $i++;
@@ -53,7 +53,8 @@ $data = displayStockReport($connection);
         ?>
         </tbody>
     </table>
-    <a class="btn btn-succes" href="/add-transaction" role="button">add transaction</a>
+    <a class="btn btn-success" href="/add-transaction" role="button">Link</a>
+
 
 
 <?php require __DIR__ . '/../../parts/footer.php'; ?>

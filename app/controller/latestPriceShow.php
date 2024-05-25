@@ -11,7 +11,6 @@ require_once __DIR__ . '/../../app/priceUpdate.php';
 require_once __DIR__ . '/../../app/dbSymbolFunc.php';
 require_once __DIR__ . '/../../app/fillTable.php';
 
-//updatePrice($connection, $settings['rapidApiKey']);
 
 $data = fillTable($connection);
 ?>
@@ -32,11 +31,12 @@ $data = fillTable($connection);
         <?php
         $i = 1;
         foreach ($data as $row) {
+            $price = number_format((float)$row['price'], 2, ',', ' ');
             echo "<tr>
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
                 <td>{$row['symbol']}</td>
-                <td>{$row['price']} {$row['mark']}</td>
+                <td>$price {$row['mark']}</td>
                 <td>{$row['price_date']}</td>
               </tr>";
             $i++;
