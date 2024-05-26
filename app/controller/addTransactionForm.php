@@ -23,12 +23,12 @@ $symbols = findAllSymbols($connection);
     </div>
 
     <div class="form-floating mb-3">
-        <select class="form-select" id="stockSymbol" name="stockSymbol" required>
+        <select class="form-select" id="stockID" name="stockID" required>
             <option selected disabled value="">Choose stock symbol</option>
             <?php foreach ($symbols as $symbol)
                 echo "<option value='{$symbol['id']}'>{$symbol['symbol']}</option>" ?>
         </select>
-        <label for="stockSymbol">Stock symbol</label>
+        <label for="stockID">Stock symbol</label>
         <div class="invalid-feedback">
             Please choose stock symbol
         </div>
@@ -43,7 +43,8 @@ $symbols = findAllSymbols($connection);
     </div>
 
     <div class="form-floating mb-3">
-        <input type="number" step="0.0001" class="form-control" id="price" name="price" placeholder="example: 3.500" required>
+        <input type="number" step="0.0001" class="form-control" id="price" name="price" placeholder="example: 3.500"
+               required>
         <label for="price">Transaction price</label>
         <div class="invalid-feedback">
             Please insert price
