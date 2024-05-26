@@ -20,4 +20,3 @@ insertTransaction($connection, $data);
 
 header("Location: portfolio");
 exit;
-

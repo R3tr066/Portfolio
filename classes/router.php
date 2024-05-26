@@ -42,6 +42,11 @@ class Router
             require_once __DIR__ . '/../app/controller/transactions.php';
             exit();
         }
+        // delete transaction
+        if (preg_match('~^/delete-transaction([?|#].*)*~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/deleteTransacation.php';
+            exit();
+        }
         // 404
         require_once __DIR__ . '/../app/controller/404.php';
 

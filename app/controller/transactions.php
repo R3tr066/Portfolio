@@ -19,6 +19,7 @@ $transactions = showTransactions($connection);
             <th scope="col">Volume</th>
             <th scope="col">Price</th>
             <th scope="col">Transaction date</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
 
@@ -36,6 +37,9 @@ $transactions = showTransactions($connection);
                 <td>$volume</td>
                 <td>$price {$transaction['mark']}</td>
                 <td>{$transaction['transaction_date']}</td>
+                <td>
+                    <a class='btn btn-danger' href='/delete-transaction?id={$transaction['id']}' role='button'>Delete</a>
+                </td>
               </tr>";
             $i++;
         }

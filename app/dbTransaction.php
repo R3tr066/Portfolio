@@ -22,7 +22,7 @@ function insertTransaction(PDO $connection, array $data): void
 
 function showTransactions(PDO $connection): array
 {
-    $sql = "SELECT tt.name AS type, s.name, s.symbol, t.volume, t.price, to_char(t.transaction_date, 'DD.MM.YYYY') AS transaction_date, c.mark
+    $sql = "SELECT t.id, tt.name AS type, s.name, s.symbol, t.volume, t.price, to_char(t.transaction_date, 'DD.MM.YYYY') AS transaction_date, c.mark
 FROM stock_transaction t
 INNER JOIN stock_transaction_type tt ON t.type_id = tt.id
 INNER JOIN stock s ON t.stock_id = s.id
@@ -32,7 +32,8 @@ INNER JOIN currency c ON s.currency_id = c.id";
     return $stmt->fetchAll();
 }
 
-function deleteTransaction(PDO $connection, int $id): void{
+function deleteTransaction(PDO $connection, int $id): void
+{
     $sql = "DELETE FROM stock_transaction WHERE id = :id";
     $stmt = $connection->prepare($sql);
     $stmt->bindParam(':id', $id);
