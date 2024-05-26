@@ -19,11 +19,11 @@ $data = fillTable($connection);
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Symbol</th>
-            <th scope="col">Price</th>
-            <th scope="col">Date</th>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Name</th>
+            <th class="text-center" scope="col">Symbol</th>
+            <th class="text-center" scope="col">Price</th>
+            <th class="text-center" scope="col">Date</th>
         </tr>
         </thead>
 
@@ -35,9 +35,9 @@ $data = fillTable($connection);
             echo "<tr>
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
-                <td>{$row['symbol']}</td>
-                <td>$price {$row['mark']}</td>
-                <td>{$row['price_date']}</td>
+                <td class='text-center'>{$row['symbol']}</td>
+                <td class='text-end pe-3'>$price {$row['mark']}</td>
+                <td class='text-center  '>{$row['price_date']}</tdclas>
               </tr>";
             $i++;
         }

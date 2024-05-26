@@ -18,14 +18,14 @@ $data = displayStockReport($connection);
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Volume</th>
-            <th scope="col">Price</th>
-            <th scope="col">Latest price</th>
-            <th scope="col">Price date</th>
-            <th scope="col">Profit</th>
-            <th scope="col">Percent</th>
+            <th class="text-center" scope="col">#</th>
+            <th class="text-center" scope="col">Name</th>
+            <th class="text-center" scope="col">Volume</th>
+            <th class="text-center" scope="col">Price</th>
+            <th class="text-center" scope="col">Latest price</th>
+            <th class="text-center" scope="col">Price date</th>
+            <th class="text-center" scope="col">Profit</th>
+            <th class="text-center" scope="col">Percent</th>
         </tr>
         </thead>
 
@@ -41,12 +41,12 @@ $data = displayStockReport($connection);
             echo "<tr>
                 <th scope='row'>$i</th>
                 <td>{$row['name']}</td>
-                <td>$volume </td>
-                <td>$price {$row['mark']}</td>
-                <td>$latestPrice {$row['mark']}</td>
-                <td>{$row['price_date']}</td>
-                <td>$profit {$row['mark']}</td>
-                <td>$percent%</td>
+                <td class='text-end pe-3'>$volume </td>
+                <td class='text-end pe-3'>$price {$row['mark']}</td>
+                <td class='text-end pe-3'>$latestPrice {$row['mark']}</td>
+                <td class='text-center'>{$row['price_date']}</td>
+                <td class='text-end pe-3'>$profit {$row['mark']}</td>
+                <td class='text-end pe-3'>$percent %</td>
               </tr>";
             $i++;
         }
