@@ -53,8 +53,5 @@ $data = displayStockReport($connection);
         ?>
         </tbody>
     </table>
-    <a class="btn btn-success" href="/add-transaction" role="button">Link</a>
-
-
 
 <?php require __DIR__ . '/../../parts/footer.php'; ?>

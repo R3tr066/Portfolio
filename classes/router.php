@@ -37,6 +37,11 @@ class Router
             require_once __DIR__ . '/../app/controller/addTransaction.php';
             exit();
         }
+        // transactions
+        if (preg_match('~^/transactions([?|#].*)*~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/transactions.php';
+            exit();
+        }
         // 404
         require_once __DIR__ . '/../app/controller/404.php';
 

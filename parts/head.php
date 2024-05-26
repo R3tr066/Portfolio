@@ -26,6 +26,8 @@
                        href="latest-price">Latest price</a>
                     <a class="nav-link<?php if (str_starts_with($_SERVER['REQUEST_URI'], "/portfolio")) echo " active" ?>"
                        href="portfolio">Portfolio</a>
+                    <a class="nav-link<?php if (str_starts_with($_SERVER['REQUEST_URI'], "/transactions")) echo " active" ?>"
+                       href="transactions">Transactions</a>
                     <a class="nav-link<?php if (str_starts_with($_SERVER['REQUEST_URI'], "/update-price")) echo " active" ?>"
                        href="update-price">Update price</a>
                 </div>
