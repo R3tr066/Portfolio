@@ -3,20 +3,19 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../connection.php';
 require_once __DIR__ . '/../dbTransaction.php';
-require_once __DIR__ . '/../dbSymbolFunc.php';
-
-$symbol = findTransactionById($connection, (int)$_POST["stockID"]);
 
 $data = array(
+    "transactionId" => $_POST["transactionId"],
     "transactionType" => $_POST["transactionType"],
     "stockID" => $_POST["stockID"],
     "volume" => $_POST["volume"],
     "price" => $_POST["price"],
-    "currencyID" => $symbol["currency_id"],
+    "currencyId" => $_POST['currency_id'],
     "date" => $_POST["date"]
 );
 
-insertTransaction($connection, $data);
 
-header("Location: trasactions");
-exit;
+updateTranscation($connection, $data);
+
+header("Location: transactions");
+exit();

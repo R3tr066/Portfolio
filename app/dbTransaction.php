@@ -39,3 +39,43 @@ function deleteTransaction(PDO $connection, int $id): void
     $stmt->bindParam(':id', $id);
     $stmt->execute();
 }
+
+function findTransactionById(PDO $connection, int $id): array
+{
+    $sql = "SELECT st.*,s.id AS symbolID, s.symbol AS symbol, c.code AS code, tp.id AS transactionTypeId, tp.name AS transactionTypeName FROM stock_transaction st
+INNER JOIN stock s ON st.stock_id = s.id
+INNER JOIN currency c ON s.currency_id = c.id
+INNER JOIN stock_transaction_type tp ON st.type_id = tp.id
+WHERE st.id = :id";
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
+function updateTranscation(PDO $connection, array $data): void
+{
+    $sql="UPDATE stock_transaction
+SET type_id = :transactionType,
+    stock_id = :stockID,
+    volume = :volume,
+    price = :price,
+    transaction_date = :date
+WHERE id = :transactionId";
+    $stmt = $connection->prepare($sql);
+    $stmt->bindParam(':transactionType', $data['transactionType']);
+    $stmt->bindParam(':stockID', $data['stockID']);
+    $stmt->bindParam(':volume', $data['volume']);
+    $stmt->bindParam(':price', $data['price']);
+    $stmt->bindParam(':date', $data['date']);
+    $stmt->bindParam(':transactionId', $data['transactionId']);
+    $stmt->execute();
+}
+
+function showCurrency (PDO $connection): array
+{
+    $sql = "select id, name from stock_transaction_type";
+    $stmt = $connection->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}

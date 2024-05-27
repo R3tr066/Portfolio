@@ -38,18 +38,23 @@ $transactions = showTransactions($connection);
                 <td class='text-end pe-3'>$price {$transaction['mark']}</td>
                 <td class='text-center'>{$transaction['transaction_date']}</td>
                 <td class='text-center'>
-                    <button type='button' data-bs-toggle='modal' data-bs-id='{$transaction['id']}' data-bs-target='#confirmModal' class='btn btn-danger' >Delete</button>
+                <div class='dropdown'>
+                    <button class='btn btn-primary dropdown-toggle' type='button'[ data-bs-toggle='dropdown' aria-expanded='false'>Actions</button>
+                        <ul class='dropdown-menu'>
+                               <li><a class='btn btn-success dropdown-item text-center' href='/update-transaction?id={$transaction['id']}' role='button'>Update</a></button></li>
+                            <li><button type='button' data-bs-toggle='modal' data-bs-id='{$transaction['id']}' data-bs-target='#confirmModal' class='text-center btn btn-danger dropdown-item' >Delete</button></li>
+                        </ul>
+                    </div>                   
                 </td>
               </tr>";
             $i++;
         }
         ?>
-        <!--       href='/delete-transaction?id={$transaction['id']}' role='button'-->
         </tbody>
     </table>
     <a class="btn btn-success" href="/add-transaction" role="button">Add transaction</a>
 
-    <!-- Modal -->
+<!--delete modal-->
     <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -72,16 +77,9 @@ $transactions = showTransactions($connection);
         const confirmModal = document.getElementById('confirmModal')
         if (confirmModal) {
             confirmModal.addEventListener('show.bs.modal', event => {
-                // Button that triggered the modal
                 const button = event.relatedTarget
-                // Extract info from data-bs-* attributes
                 const id = button.getAttribute('data-bs-id')
-                // If necessary, you could initiate an Ajax request here
-                // and then do the updating in a callback.
 
-                // Update the modal's content.
-                const modalTitle = confirmModal.querySelector('.modal-title')
-                const modalBodyInput = confirmModal.querySelector('.modal-body input')
                 const btn = confirmModal.querySelector('#deleteBtn')
 
                 btn.onclick = function () {
