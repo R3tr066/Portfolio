@@ -5,7 +5,7 @@ require_once __DIR__ . '/../connection.php';
 require_once __DIR__ . '/../dbTransaction.php';
 require_once __DIR__ . '/../dbSymbolFunc.php';
 
-$symbol = findTransactionById($connection, (int)$_POST["stockID"]);
+$symbol = findByID($connection, (int)$_POST["stockID"]);
 
 $data = array(
     "transactionType" => $_POST["transactionType"],
@@ -18,5 +18,5 @@ $data = array(
 
 insertTransaction($connection, $data);
 
-header("Location: trasactions");
+header("Location: transactions");
 exit;

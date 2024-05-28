@@ -7,19 +7,10 @@ class Router
         $method = $_SERVER['REQUEST_METHOD'];
         $uri = $_SERVER['REQUEST_URI'];
 
-        // main page
-        if (preg_match('~^/([?|#].*)*$~si', $uri)) {
-            require_once __DIR__ . '/../app/controller/mainPage.php';
-            exit();
-        }
+
         // latest price
         if (preg_match('~^/latest-price([?|#].*)*~si', $uri)) {
             require_once __DIR__ . '/../app/controller/latestPriceShow.php';
-            exit();
-        }
-        // portfolio
-        if (preg_match('~^/portfolio([?|#].*)*~si', $uri)) {
-            require_once __DIR__ . '/../app/controller/portfolio.php';
             exit();
         }
         // update price
@@ -55,6 +46,11 @@ class Router
         // update transaction
         if (preg_match('~^/update-transaction([?|#].*)*~si', $uri) && $method == "POST") {
             require_once __DIR__ . '/../app/controller/updateTransaction.php';
+            exit();
+        }
+        // portfolio
+        if (preg_match('~^/([?|#].*)*~si', $uri)) {
+            require_once __DIR__ . '/../app/controller/portfolio.php';
             exit();
         }
         // 404

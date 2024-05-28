@@ -13,8 +13,9 @@ $transactionId = (int)$_GET['id'];
 $data = findTransactionById($connection, $transactionId);
 $currencies = showCurrency($connection);
 $symbols = findAllSymbols($connection);
-//var_dump($data);
 ?>
+
+<h1>Update transaction</h1>
 
 <form class="needs-validation" novalidate action="/update-transaction" method="post">
 
@@ -73,7 +74,7 @@ $symbols = findAllSymbols($connection);
     </div>
 
     <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-primary" type="submit">Update</button>
     </div>
 </form>
 

@@ -9,12 +9,11 @@ require_once __DIR__ . '/../../app/getStockPriceFunc.php';
 require_once __DIR__ . '/../../app/dbPriceFunc.php';
 require_once __DIR__ . '/../../app/priceUpdate.php';
 require_once __DIR__ . '/../../app/dbSymbolFunc.php';
-require_once __DIR__ . '/../../app/fillTable.php';
 
-
-$data = fillTable($connection);
+$data = findLatestPrices($connection);
 ?>
 
+<h1>Latest price</h1>
 
     <table class="table">
         <thead>

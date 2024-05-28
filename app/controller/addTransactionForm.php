@@ -9,6 +9,7 @@ require_once __DIR__ . '/../dbSymbolFunc.php';
 
 $symbols = findAllSymbols($connection);
 ?>
+<h1>Add transaction</h1>
 
 <form class="needs-validation" novalidate action="/add-transaction" method="post">
     <div class="form-floating mb-3">
@@ -60,7 +61,7 @@ $symbols = findAllSymbols($connection);
     </div>
 
     <div class="col-12">
-        <button class="btn btn-primary" type="submit">Submit form</button>
+        <button class="btn btn-success" type="submit">Add</button>
     </div>
 </form>
 

@@ -122,9 +122,14 @@ INSERT INTO public.stock (symbol, name, currency_id, alias) VALUES ('VLD', 'Velo
 
 
 INSERT INTO public.stock_transaction_type (code, name)
-VALUES ('BUY', ' Kúpa');
+VALUES ('BUY', 'Buy');
 INSERT INTO public.stock_transaction_type (code, name)
-VALUES ('SELL', 'Predaj');
+VALUES ('SELL', 'Sell');
+
+INSERT INTO public.stock_transaction (type_id, stock_id, volume, price, currency_id, transaction_date, created_date) VALUES ((SELECT id FROM stock_transaction_type WHERE code = 'BUY'), (SELECT id FROM stock WHERE symbol = 'ASML.AS'), 1.00000000, 515.3000, (SELECT id FROM currency WHERE code = 'USD'), '2023-01-02', '2024-05-28 16:17:10.704167');
+INSERT INTO public.stock_transaction (type_id, stock_id, volume, price, currency_id, transaction_date, created_date) VALUES ((SELECT id FROM stock_transaction_type WHERE code = 'BUY'), (SELECT id FROM stock WHERE symbol = 'BRYN.DE'), 1.00000000, 302.5500, (SELECT id FROM currency WHERE code = 'EUR'), '2022-05-05', '2024-05-28 16:17:10.704167');
+INSERT INTO public.stock_transaction (type_id, stock_id, volume, price, currency_id, transaction_date, created_date) VALUES ((SELECT id FROM stock_transaction_type WHERE code = 'BUY'), (SELECT id FROM stock WHERE symbol = 'SXR8.DE'), 1.00000000, 387.5300, (SELECT id FROM currency WHERE code = 'EUR'), '2023-05-02', '2024-05-28 16:17:10.704167');
+
 
 ";
 

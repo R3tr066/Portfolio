@@ -14,6 +14,7 @@ require_once __DIR__ . '/../../app/dbPortfolio.php';
 $data = displayStockReport($connection);
 ?>
 
+<h1>Portfolio</h1>
 
     <table class="table">
         <thead>

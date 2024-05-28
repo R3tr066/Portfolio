@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../connection.php';
 require_once __DIR__ . '/../dbTransaction.php';
 
+
 $data = array(
     "transactionId" => $_POST["transactionId"],
     "transactionType" => $_POST["transactionType"],

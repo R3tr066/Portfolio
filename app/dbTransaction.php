@@ -26,7 +26,8 @@ function showTransactions(PDO $connection): array
 FROM stock_transaction t
 INNER JOIN stock_transaction_type tt ON t.type_id = tt.id
 INNER JOIN stock s ON t.stock_id = s.id
-INNER JOIN currency c ON s.currency_id = c.id";
+INNER JOIN currency c ON s.currency_id = c.id
+ORDER BY t.transaction_date";
     $stmt = $connection->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();
